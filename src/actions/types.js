@@ -1,0 +1,6 @@
+// Top Navigation
+const DISPLAYED_TOP_DROPDOWN = "DISPLAYED_TOP_DROPDOWN";
+
+export default {
+  DISPLAYED_TOP_DROPDOWN,
+};
