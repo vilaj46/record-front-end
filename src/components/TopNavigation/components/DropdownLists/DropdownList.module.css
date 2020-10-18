@@ -1,0 +1,49 @@
+.ul {
+  position: absolute;
+  border: 1px solid black;
+}
+
+.li {
+  list-style-type: none;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 12px;
+}
+
+.button:hover {
+  background-color: #5194ff;
+  color: white;
+}
+
+/**
+  The input is kinda small. Once we make our buttons smaller
+  it should fit appropriately. Right now we have to click on the word
+  as opposed to the button.
+*/
+.fileInput {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+}
+
+.label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  background-color: #4245a8;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+}

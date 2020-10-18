@@ -1,5 +1,5 @@
-import displayDropdown from "./displayDropdown.js";
+import displayTopDrop from "./displayTopDrop.js";
 
 export default {
-  displayDropdown,
+  displayTopDrop,
 };
