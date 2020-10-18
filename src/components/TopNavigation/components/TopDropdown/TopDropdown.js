@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import styles from "./TopDropdown.module.css";
 
 // Redux Actions
-import actions from "../../../../actions/topNavigation";
+import actions from "../../../../actions/topNavigation.js";
 
 // Dropdown Lists
 import FileDropdownList from "../DropdownLists/FileDropdownList";
 import EditDropdownList from "../DropdownLists/EditDropdownList";
 
-const TopDropdown = ({ label, displayTopDrop, topDropDisplayed }) => {
+const TopDropdown = ({ label, disabled, displayTopDrop, topDropDisplayed }) => {
   const onClick = (e) => {
     e.stopPropagation();
     displayTopDrop(label);
@@ -28,23 +28,27 @@ const TopDropdown = ({ label, displayTopDrop, topDropDisplayed }) => {
 
   // Sets the inset of the pressed. Appears pressed in? Maybe a little.
   const buttonPressed = topDropDisplayed === label ? styles.buttonPressed : "";
+  // Disable click events for the file name.
+  const isDisabled = disabled ? styles.disabled : "";
 
   // Determines which list we have open.
   const displayFileDropdown = label === "File" && topDropDisplayed === "File";
   const displayEditDropdown = label === "Edit" && topDropDisplayed === "Edit";
 
   return (
-    <div className={styles.topDropContainer} onMouseEnter={(e) => onFocus(e)}>
-      <button
-        type="button"
-        className={`${styles.button} ${buttonPressed}`}
-        onClick={(e) => onClick(e)}
-      >
-        {label}
-      </button>
-      {displayFileDropdown && <FileDropdownList />}
-      {displayEditDropdown && <EditDropdownList />}
-    </div>
+    label && (
+      <div className={styles.topDropContainer} onMouseEnter={(e) => onFocus(e)}>
+        <button
+          type="button"
+          className={`${styles.button} ${buttonPressed} ${isDisabled}`}
+          onClick={(e) => onClick(e)}
+        >
+          {label}
+        </button>
+        {displayFileDropdown && <FileDropdownList />}
+        {displayEditDropdown && <EditDropdownList />}
+      </div>
+    )
   );
 };
 

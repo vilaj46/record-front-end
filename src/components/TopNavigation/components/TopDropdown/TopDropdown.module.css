@@ -15,3 +15,7 @@
 .topDropContainer {
   position: relative;
 }
+
+.disabled {
+  pointer-events: none;
+}

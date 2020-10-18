@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 // CSS
 import styles from "./TopNavigation.module.css";
@@ -13,15 +14,23 @@ import TopDropdown from "./components/TopDropdown/TopDropdown";
  * If we click off the drop down, close the drop down.
  */
 
-const TopNavigation = () => {
+const TopNavigation = ({ fileName }) => {
   return (
     <nav className={styles.nav}>
       <TopDropdown label="File" />
       <TopDropdown label="Edit" />
       <TopDropdown label="View" />
       <TopDropdown label="Document" />
+      <TopDropdown label={fileName} disabled={true} />
     </nav>
   );
 };
 
-export default TopNavigation;
+const mapStateToProps = (state) => {
+  const { name } = state.topNavigation.file;
+  return {
+    fileName: name,
+  };
+};
+
+export default connect(mapStateToProps)(TopNavigation);
