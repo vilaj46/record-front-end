@@ -1,8 +1,22 @@
+// Probably more places
+const LOADED_APP = "LOADED_APP"; // Left Navigation,
+
+// Left Navigation
+const CHANGED_LEFT_TAB = "CHANGED_LEFT_TAB";
+const TOGGLED_EXTENSION = "TOGGLED_EXTENSION";
+
 // Top Navigation
 const DISPLAYED_TOP_DROPDOWN = "DISPLAYED_TOP_DROPDOWN";
 const UPLOADED_FILE = "UPLOADED_FILE";
 
+// Main Section
+const TOGGLED_MAIN = "TOGGLED_MAIN";
+
 export default {
   DISPLAYED_TOP_DROPDOWN,
   UPLOADED_FILE,
+  LOADED_APP,
+  CHANGED_LEFT_TAB,
+  TOGGLED_EXTENSION,
+  TOGGLED_MAIN,
 };

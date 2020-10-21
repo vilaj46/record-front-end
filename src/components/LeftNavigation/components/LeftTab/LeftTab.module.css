@@ -1,0 +1,12 @@
+.icon {
+  display: block;
+  margin: 10px auto;
+}
+
+.iconContainer {
+  width: 100%;
+}
+
+/* .iconContainer:hover > .icon {
+  background-color: #ffffff;
+} */

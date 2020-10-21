@@ -1,0 +1,12 @@
+.leftNavigation {
+  display: flex;
+  flex-direction: row;
+  height: 94vh;
+  border: 1px solid #ffffff;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+}

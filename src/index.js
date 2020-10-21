@@ -9,16 +9,18 @@ import "./index.css"; // CSS Reset.
 // Sub Components
 import App from "./components/App/App";
 
-// Start with Top navigation bar.
-// Should include File > open as the first option.
-// Deploy record front end app and try with a python backend.
-// Our python backend needs a requirements file.
-
-// Continuation of Redux setup.
-
 // Redux setup.
 import rootReducer from "./reducers";
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
+
+/**
+ * LeftNavigation needs to be a lot less ugly. Fix the icons and borders.
+ * Add hover arrows.
+ * Disable vertical height fixing, show right border is draggable.
+ * Disable left border from draggable.
+ *
+ * Bottom white showing.
+ */
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,4 +1,12 @@
 .app {
-  border: 2px solid black;
-  height: 100vh;
+  /** 
+    Disable the scrolling to keep the LeftNavigation resizing in the window.
+  */
+  overflow: hidden;
+  background-color: #404040;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
 }

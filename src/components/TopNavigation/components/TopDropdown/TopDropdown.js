@@ -26,7 +26,7 @@ const TopDropdown = ({ label, disabled, displayTopDrop, topDropDisplayed }) => {
     }
   };
 
-  // Sets the inset of the pressed. Appears pressed in? Maybe a little.
+  // Sets the inset of the pressed. Keeps button highlighted even when going over the dropdown list.
   const buttonPressed = topDropDisplayed === label ? styles.buttonPressed : "";
   // Disable click events for the file name.
   const isDisabled = disabled ? styles.disabled : "";
