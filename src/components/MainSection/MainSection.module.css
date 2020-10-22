@@ -1,7 +1,9 @@
 .main {
-  /* background-color: #404040; */
   width: 100%;
   color: white;
+  height: 94vh;
+  margin-top: 10px;
+  position: relative;
 }
 
 .show {
@@ -10,4 +12,21 @@
 
 .hide {
   display: none;
+}
+
+.pdfContainer {
+  width: 75%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.pdf {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1600px) {
+  .pdfContainer {
+    width: 100%;
+  }
 }

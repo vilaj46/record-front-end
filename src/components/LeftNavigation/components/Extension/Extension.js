@@ -72,6 +72,18 @@ const Extension = ({
       }}
       onResize={(e, direction, ref, d) => {
         const calcWidth = width + d.width;
+
+        // Possibly figure out PDF scaling and zooming
+        // based on how big our left navigation panel is.
+        // const winWidth = window.innerWidth;
+        // const calcPercent = (calcWidth * 100) / winWidth;
+
+        // if (winWidth >= 1900 && calcPercent >= 48) {
+        //   // Configure PDF scaling
+        // } else if (winWidth <= 1100 && calcPercent >= 26) {
+        //   // Configure PDF scaling
+        // }
+
         if (calcWidth <= 135) {
           toggleTitles(true);
         } else if (shrinkTitles === true && calcWidth > 135) {

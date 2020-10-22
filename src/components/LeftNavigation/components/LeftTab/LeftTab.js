@@ -10,33 +10,23 @@ import actions from "../../../../actions/leftNavigation.js";
 // SVGS
 import right from "../../../../svgs/lnright.svg";
 
-const LeftTab = ({
-  src,
-  hover,
-  tab,
-  alt,
-  title,
-  setTab,
-  display,
-  toggleExtension,
-  active,
-}) => {
-  const [image, setImage] = useState(src);
+const LeftTab = ({ data, setTab, display, toggleExtension, active }) => {
+  const [image, setImage] = useState(data.src);
 
   const onClick = () => {
     if (!display) {
       toggleExtension(true);
     }
-    setTab(tab);
+    setTab(data.tab);
   };
 
   const onMouseEnter = () => {
-    setImage(hover);
+    setImage(data.hover);
   };
 
   const onMouseLeave = () => {
-    if (image !== src) {
-      setImage(src);
+    if (image !== data.src) {
+      setImage(data.src);
     }
   };
 
@@ -53,11 +43,11 @@ const LeftTab = ({
       <div className={activeStyle}>
         <img
           className={styles.icon}
-          src={active ? hover : image}
-          alt={alt}
-          title={title}
+          src={active ? data.hover : image}
+          alt={data.alt}
+          title={data.title}
         />
-        {image === hover && !active && (
+        {image === data.hover && !active && (
           <img src={right} className={styles.arrow} alt="Right Arrow" />
         )}
       </div>

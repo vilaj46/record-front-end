@@ -27,7 +27,7 @@ const TopNavigation = ({ fileName }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { name } = state.topNavigation.file;
+  const { name } = state.file;
   return {
     fileName: name,
   };

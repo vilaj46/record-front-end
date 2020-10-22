@@ -13,12 +13,12 @@ import MainSection from "../MainSection/MainSection";
 import topNavigation from "../../actions/topNavigation.js";
 import leftNavigation from "../../actions/leftNavigation.js";
 
-const App = ({ topDropDisplayed, blob, displayTopDrop, setLeftNav }) => {
+const App = ({ topDropDisplayed, displayTopDrop, setLeftNav }) => {
   const [loaded, setLoaded] = useState(false);
 
   /**
    * Used to close a top dropdown menu if one is open
-   * and we are clicking off it.
+   * and we are clicking off it. This does not apply to the PDF iframe.
    */
   const onClick = () => {
     if (topDropDisplayed.length > 0) {
@@ -51,11 +51,9 @@ const App = ({ topDropDisplayed, blob, displayTopDrop, setLeftNav }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { topDropDisplayed, file } = state.topNavigation;
-
+  const { topDropDisplayed } = state.topNavigation;
   return {
     topDropDisplayed,
-    blob: file.url,
   };
 };
 

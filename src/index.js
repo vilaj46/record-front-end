@@ -14,7 +14,20 @@ import rootReducer from "./reducers";
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
 
 /**
- * Continue Documentation
+ * Continue Documentation and clean up front end.
+ * Clean up Components Remove bloat wheere we can. Mostly importing of actions.
+ *
+ * Hookup backend.
+ *
+ * PDF Functionality
+ * Insert
+ * Remove
+ * Shrink
+ *
+ * Left Navigation Tabs
+ * Pages
+ * Bookmarks
+ * Table of Contents
  */
 
 ReactDOM.render(

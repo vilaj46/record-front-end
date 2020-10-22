@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 // CSS
 import styles from "../DropdownList.module.css";
 
-// Action
+// Actions
 import topNavigation from "../../../../../actions/topNavigation.js";
+import { uploadFile } from "../../../../../actions/file.js";
 
-const OpenButton = ({ uploadFile }) => {
+const OpenButton = ({ uploadFile, displayTopDrop }) => {
   // Was not firing so we use onInput.
   const onChange = () => {
     return;
@@ -18,13 +19,20 @@ const OpenButton = ({ uploadFile }) => {
       name: e.target.files[0].name,
       url: objectURL,
     });
+
+    displayTopDrop("");
   };
+
+  const onClick = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <li className={styles.li}>
       <button
         type="submit"
         className={styles.button}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => onClick(e)}
       >
         <input
           type="file"
@@ -42,6 +50,7 @@ const OpenButton = ({ uploadFile }) => {
   );
 };
 
-export default connect(null, { uploadFile: topNavigation.uploadFile })(
-  OpenButton
-);
+export default connect(null, {
+  uploadFile,
+  displayTopDrop: topNavigation.displayTopDrop,
+})(OpenButton);

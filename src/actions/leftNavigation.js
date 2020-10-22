@@ -64,6 +64,18 @@ const toggleExtension = (bool) => {
   };
 };
 
+/**
+ * toggleTitles
+ *
+ * @param {Boolean} bool
+ * @return {Object} type and payload.
+ *
+ * When resizing the LeftNavigation Panel,
+ * we need to know when to toggle the tab title length.
+ * For example: Bookmarks is kind of long, so when our
+ * left nav gets to a certain width we use ellipses
+ * and cut some of the letters out.
+ */
 const toggleTitles = (bool) => {
   const { TOGGLED_TITLES } = types;
   return {

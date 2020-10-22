@@ -21,18 +21,13 @@
   color: white;
 }
 
-/**
-  The input is kinda small. Once we make our buttons smaller
-  it should fit appropriately. Right now we have to click on the word
-  as opposed to the button.
-*/
 .fileInput {
-  width: 100%;
-  height: 100%;
+  height: 37px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   right: 0;
+  top: 0;
 }
 
 .label {
