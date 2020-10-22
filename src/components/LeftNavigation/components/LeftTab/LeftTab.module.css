@@ -4,9 +4,34 @@
 }
 
 .iconContainer {
-  width: 100%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
 }
 
-/* .iconContainer:hover > .icon {
-  background-color: #ffffff;
-} */
+.regWidth {
+  width: 50px;
+}
+
+.activeWidth {
+  width: 52px;
+}
+
+.arrow {
+  position: absolute;
+  right: -15px;
+  height: 18px;
+  width: 18px;
+  top: 12px;
+}
+
+.activeBorder {
+  width: 100%;
+  margin: 0 auto;
+  border-left: 1px solid #bfbfbf;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf;
+  border-right: 1px solid #303030;
+  background-color: #303030;
+  z-index: 10;
+}

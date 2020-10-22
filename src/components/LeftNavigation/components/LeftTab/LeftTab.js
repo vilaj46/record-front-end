@@ -7,6 +7,9 @@ import styles from "./LeftTab.module.css";
 // Actions
 import actions from "../../../../actions/leftNavigation.js";
 
+// SVGS
+import right from "../../../../svgs/lnright.svg";
+
 const LeftTab = ({
   src,
   hover,
@@ -16,6 +19,7 @@ const LeftTab = ({
   setTab,
   display,
   toggleExtension,
+  active,
 }) => {
   const [image, setImage] = useState(src);
 
@@ -36,14 +40,27 @@ const LeftTab = ({
     }
   };
 
+  const activeStyle = active ? styles.activeBorder : styles.iconContainer;
+  const containerWidth = active ? styles.activeWidth : styles.regWidth;
+
   return (
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={styles.iconContainer}
+      className={`${styles.iconContainer} ${containerWidth}`}
       onClick={onClick}
     >
-      <img className={styles.icon} src={image} alt={alt} title={title} />
+      <div className={activeStyle}>
+        <img
+          className={styles.icon}
+          src={active ? hover : image}
+          alt={alt}
+          title={title}
+        />
+        {image === hover && !active && (
+          <img src={right} className={styles.arrow} alt="Right Arrow" />
+        )}
+      </div>
     </div>
   );
 };

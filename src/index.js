@@ -14,12 +14,7 @@ import rootReducer from "./reducers";
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
 
 /**
- * LeftNavigation needs to be a lot less ugly. Fix the icons and borders.
- * Add hover arrows.
- * Disable vertical height fixing, show right border is draggable.
- * Disable left border from draggable.
- *
- * Bottom white showing.
+ * Continue Documentation
  */
 
 ReactDOM.render(

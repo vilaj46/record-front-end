@@ -2,11 +2,32 @@
   display: flex;
   flex-direction: row;
   height: 94vh;
-  border: 1px solid #ffffff;
+  margin-top: 10px;
+  position: relative;
 }
 
 .icons {
   display: flex;
   flex-direction: column;
-  width: 40px;
+  width: 50px;
+}
+
+.borderOne {
+  height: calc(100% + 20px);
+  margin-top: 10px;
+  width: 1px;
+  background-color: #808080;
+  position: absolute;
+  right: 1px;
+  top: -20px;
+}
+
+.borderTwo {
+  height: calc(100% + 20px);
+  margin-top: 10px;
+  width: 1px;
+  background-color: #303030;
+  position: absolute;
+  right: 0;
+  top: -20px;
 }

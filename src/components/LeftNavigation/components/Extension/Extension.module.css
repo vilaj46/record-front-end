@@ -1,7 +1,66 @@
 .wrapper {
   height: 94vh;
+  border: 1px solid #bfbfbf;
+  position: relative;
 }
 
-.title {
+.titleWrapper {
+  height: 44px;
+  background-color: #303030;
   color: #ffffff;
+}
+
+.titleText {
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 12px;
+  width: 100px;
+  position: absolute;
+  left: 15px;
+}
+
+.handle {
+  width: 3px;
+  height: 50px;
+  position: absolute;
+  right: -6px;
+  top: 50%;
+}
+
+.bar {
+  width: 3px;
+  height: 5px;
+  border-top: 2px solid #bfbfbf;
+}
+
+.extensionBodyWrapper {
+  height: 100%;
+  background-color: #303030;
+}
+
+.extensionBody {
+  background-color: #ffffff;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  margin: auto;
+  border-radius: 1px;
+}
+
+.arrowContainer {
+  position: absolute;
+  right: 5px;
+  top: 12px;
+  border: 1px solid #bfbfbf;
+}
+
+.arrow {
+  display: block;
+  margin: auto;
+  height: 16px;
+  width: 16px;
+  transform: rotate(180deg);
+}
+
+.arrowContainer:hover {
+  border: 1px solid #ffffff;
 }

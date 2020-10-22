@@ -64,8 +64,17 @@ const toggleExtension = (bool) => {
   };
 };
 
+const toggleTitles = (bool) => {
+  const { TOGGLED_TITLES } = types;
+  return {
+    type: TOGGLED_TITLES,
+    payload: bool,
+  };
+};
+
 export default {
   setDimensions,
   setTab,
   toggleExtension,
+  toggleTitles,
 };
