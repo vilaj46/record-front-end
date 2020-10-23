@@ -1,0 +1,13 @@
+.handle {
+  width: 3px;
+  height: 50px;
+  position: absolute;
+  right: -6px;
+  top: 50%;
+}
+
+.bar {
+  width: 3px;
+  height: 5px;
+  border-top: 2px solid #bfbfbf;
+}

@@ -19,20 +19,6 @@
   left: 15px;
 }
 
-.handle {
-  width: 3px;
-  height: 50px;
-  position: absolute;
-  right: -6px;
-  top: 50%;
-}
-
-.bar {
-  width: 3px;
-  height: 5px;
-  border-top: 2px solid #bfbfbf;
-}
-
 .extensionBodyWrapper {
   height: 100%;
   background-color: #303030;
@@ -44,23 +30,4 @@
   width: calc(100% - 10px);
   margin: auto;
   border-radius: 1px;
-}
-
-.arrowContainer {
-  position: absolute;
-  right: 5px;
-  top: 12px;
-  border: 1px solid #bfbfbf;
-}
-
-.arrow {
-  display: block;
-  margin: auto;
-  height: 16px;
-  width: 16px;
-  transform: rotate(180deg);
-}
-
-.arrowContainer:hover {
-  border: 1px solid #ffffff;
 }

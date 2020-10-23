@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 
 import styles from "./MainSection.module.css";
 
-const MainSection = ({ showMain, url }) => {
+const MainSection = ({ showMain, blob }) => {
   const display = showMain ? styles.show : styles.hide;
 
   return (
     <div className={`${styles.main} ${display}`}>
-      {url.length > 0 && (
+      {blob.length > 0 && (
         <div className={styles.pdfContainer}>
           <iframe
             id="pdf"
             className={styles.pdf}
-            src={url}
+            src={`${blob}#zoom=100`}
             title="File"
           ></iframe>
         </div>
@@ -24,10 +24,10 @@ const MainSection = ({ showMain, url }) => {
 
 const mapStateToProps = (state) => {
   const { showMain } = state.mainSection;
-  const { url } = state.file;
+  const { blob } = state.file;
   return {
     showMain,
-    url,
+    blob,
   };
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Resizable } from "re-resizable";
 
@@ -9,49 +9,43 @@ import styles from "./Extension.module.css";
 import actions from "../../../../actions/leftNavigation.js";
 import mainSection from "../../../../actions/mainSection.js";
 
-// SVGS
-import arrow from "../../../../svgs/lnright.svg";
-import arrowHover from "../../../../svgs/lnRightHover.svg";
+// Sub Components
+import Handle from "./components/Handle/Handle";
+import CloseButton from "./components/CloseButton/CloseButton";
+
+// Helper Functions
+import { setCustomTitle, onResize, onResizeStop } from "./helperFuncs.js";
 
 const Extension = ({
-  width,
+  leftNavProps,
+  mainSectProps,
   setDimensions,
-  openTab,
   toggleExtension,
-  display,
   toggleMain,
   setTab,
-  shrinkTitles,
   toggleTitles,
 }) => {
-  /**
-   * Given the tab number set the title.
-   */
-  let tabTitle;
-  if (openTab === 0) {
-    tabTitle = "Pages";
-  } else if (openTab === 1) {
-    tabTitle = "Bookmarks";
-  } else {
-    tabTitle = "";
-  }
+  const { width, showExtension, shrinkTitles } = leftNavProps;
+  const { showMain } = mainSectProps;
 
-  if ((shrinkTitles && openTab === 1) || width <= 135) {
-    if (openTab === 1) {
-      tabTitle = tabTitle.slice(0, 5) + "...";
-    }
-  }
-  /**
-   * Standard black border for now. Will remove and restyle.
-   * The display value from our reducer. If we close the resizable component
-   * all the way it sets to false. Toggle the className so we don't get memory leaks
-   * when taking the component out of the DOM.
-   */
+  // Minimum width before closing the extension.
+  const MIN_WIDTH_BEFORE_CLOSING = 100;
+  // Minimum width before we toggle the extension titles.
+  const MIN_WIDTH_BEFORE_TITLES_CHANGE = 135;
+  // Maximum width before closing the main section.
+  const MAX_WIDTH_BEFORE_CLOSING_MAIN = 150;
+
+  const WINDOW_WIDTH = window.innerWidth;
+
+  const customTabTitle = setCustomTitle(
+    leftNavProps,
+    MIN_WIDTH_BEFORE_TITLES_CHANGE
+  );
+
+  // Hides extension if we make it too small.
   const style = {
-    display: `${!display ? "none" : ""}`,
+    display: `${!showExtension ? "none" : ""}`,
   };
-
-  const MIN_WIDTH = 110;
 
   return (
     <Resizable
@@ -59,7 +53,7 @@ const Extension = ({
         width,
       }}
       style={style}
-      size={{ width, minWidth: MIN_WIDTH }}
+      size={{ width, minWidth: MIN_WIDTH_BEFORE_CLOSING }}
       enable={{
         right: true,
         bottom: false,
@@ -71,60 +65,54 @@ const Extension = ({
         topLeft: false,
       }}
       onResize={(e, direction, ref, d) => {
+        // Set the new width of the extension.
         const calcWidth = width + d.width;
 
-        // Possibly figure out PDF scaling and zooming
-        // based on how big our left navigation panel is.
-        // const winWidth = window.innerWidth;
-        // const calcPercent = (calcWidth * 100) / winWidth;
+        const specs = {
+          calcWidth,
+          MIN_WIDTH_BEFORE_CLOSING,
+          MIN_WIDTH_BEFORE_TITLES_CHANGE,
+        };
 
-        // if (winWidth >= 1900 && calcPercent >= 48) {
-        //   // Configure PDF scaling
-        // } else if (winWidth <= 1100 && calcPercent >= 26) {
-        //   // Configure PDF scaling
-        // }
+        const localProps = {
+          shrinkTitles,
+        };
 
-        if (calcWidth <= 135) {
-          toggleTitles(true);
-        } else if (shrinkTitles === true && calcWidth > 135) {
-          toggleTitles(false);
-        }
+        const localActions = {
+          toggleTitles,
+          toggleExtension,
+          setTab,
+        };
 
-        if (calcWidth <= MIN_WIDTH) {
-          setTab(-1);
-          toggleExtension(false);
-          toggleTitles(false);
-        }
+        onResize(specs, localProps, localActions);
       }}
       onResizeStop={(e, direction, ref, d) => {
-        const winWidth = window.innerWidth;
+        // Set the new width of the extension.
         const calcWidth = width + d.width;
-        const difference = winWidth - calcWidth;
+        const difference = WINDOW_WIDTH - calcWidth;
 
-        if (difference <= 150) {
-          setDimensions(winWidth - 50);
-          toggleMain(false);
-          if (display === false) {
-            toggleExtension(true);
-          }
-        } else if (calcWidth <= MIN_WIDTH) {
-          toggleExtension(false);
-          toggleTitles(false);
-          // Was getting a memory leak warning.
-          setTimeout(() => {
-            setTab(-1);
-          }, 50);
-        } else {
-          if (display === false) {
-            toggleExtension(true);
-          }
-          setDimensions(calcWidth);
-        }
+        const specs = {
+          calcWidth,
+          difference,
+          MAX_WIDTH_BEFORE_CLOSING_MAIN,
+          WINDOW_WIDTH,
+        };
+
+        const localProps = {
+          showMain,
+        };
+
+        const localActions = {
+          setDimensions,
+          toggleMain,
+        };
+
+        onResizeStop(specs, localProps, localActions);
       }}
     >
       <div className={styles.wrapper}>
         <div className={styles.titleWrapper}>
-          <h2 className={styles.titleText}>{tabTitle}</h2>
+          <h2 className={styles.titleText}>{customTabTitle}</h2>
           <CloseButton toggleExtension={toggleExtension} setTab={setTab} />
         </div>
         <div className={styles.extensionBodyWrapper}>
@@ -136,53 +124,10 @@ const Extension = ({
   );
 };
 
-const CloseButton = ({ toggleExtension, setTab }) => {
-  const [image, setImage] = useState(arrow);
-
-  const onMouseEnter = () => {
-    setImage(arrowHover);
-  };
-
-  const onMouseLeave = () => {
-    setImage(arrow);
-  };
-
-  const onClick = () => {
-    toggleExtension(false);
-    setTab(-1);
-  };
-
-  return (
-    <div
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={styles.arrowContainer}
-      onClick={onClick}
-    >
-      <img src={image} className={styles.arrow} alt="Left Arrow" />
-    </div>
-  );
-};
-
-const Handle = () => {
-  return (
-    <div className={styles.handle}>
-      <div className={styles.bar} />
-      <div className={styles.bar} />
-      <div className={styles.bar} />
-      <div className={styles.bar} />
-      <div className={styles.bar} />
-    </div>
-  );
-};
-
 const mapStateToProps = (state) => {
-  const { showExtension, width, openTab, shrinkTitles } = state.leftNavigation;
   return {
-    display: showExtension,
-    openTab,
-    width,
-    shrinkTitles,
+    leftNavProps: state.leftNavigation,
+    mainSectProps: state.mainSection,
   };
 };
 

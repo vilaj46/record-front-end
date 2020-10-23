@@ -4,6 +4,7 @@
   */
   overflow: hidden;
   background-color: #404040;
+  position: relative;
 }
 
 .body {

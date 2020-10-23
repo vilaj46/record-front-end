@@ -12,10 +12,9 @@ const ExitButton = ({ displayTopDrop, file, closeFile }) => {
   const onClick = (e) => {
     e.stopPropagation();
     displayTopDrop("");
-    if (file.name && file.url) {
+    if (file.name && file.blob) {
       closeFile();
     }
-    // Close the left nav menu and remove file from reducer.
   };
 
   return (

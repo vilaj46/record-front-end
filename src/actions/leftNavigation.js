@@ -12,7 +12,7 @@ import types from "./types.js";
  * This function is also used in the Extension Component to keep our
  * Left Navigation Component Lined up with our Third Party Resizable Component.
  */
-const setDimensions = (width) => {
+export const setDimensions = (width) => {
   const { LOADED_APP } = types;
   return {
     type: LOADED_APP,
@@ -33,7 +33,7 @@ const setDimensions = (width) => {
  * 0 - Pages
  * 1 - Bookmarks
  */
-const setTab = (tab) => {
+export const setTab = (tab) => {
   const { CHANGED_LEFT_TAB } = types;
   return {
     type: CHANGED_LEFT_TAB,
@@ -56,7 +56,7 @@ const setTab = (tab) => {
  * If we are closing the extension to a certain with, we just toggle
  * the extension off.
  */
-const toggleExtension = (bool) => {
+export const toggleExtension = (bool) => {
   const { TOGGLED_EXTENSION } = types;
   return {
     type: TOGGLED_EXTENSION,
@@ -76,7 +76,7 @@ const toggleExtension = (bool) => {
  * left nav gets to a certain width we use ellipses
  * and cut some of the letters out.
  */
-const toggleTitles = (bool) => {
+export const toggleTitles = (bool) => {
   const { TOGGLED_TITLES } = types;
   return {
     type: TOGGLED_TITLES,

@@ -1,0 +1,18 @@
+.arrowContainer {
+  position: absolute;
+  right: 5px;
+  top: 12px;
+  border: 1px solid #bfbfbf;
+}
+
+.arrow {
+  display: block;
+  margin: auto;
+  height: 16px;
+  width: 16px;
+  transform: rotate(180deg);
+}
+
+.arrowContainer:hover {
+  border: 1px solid #ffffff;
+}

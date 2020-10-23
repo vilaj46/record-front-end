@@ -10,7 +10,7 @@ import types from "./types.js";
  * almost the full width of the window, we hide the main section.
  *
  */
-const toggleMain = (bool) => {
+export const toggleMain = (bool) => {
   const { TOGGLED_MAIN } = types;
   return {
     type: TOGGLED_MAIN,

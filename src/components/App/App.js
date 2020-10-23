@@ -8,6 +8,7 @@ import styles from "./App.module.css";
 import TopNavigation from "../TopNavigation/TopNavigation";
 import LeftNavigation from "../LeftNavigation/LeftNavigation";
 import MainSection from "../MainSection/MainSection";
+import Modals from "../Modals/Modals";
 
 // Actions
 import topNavigation from "../../actions/topNavigation.js";
@@ -46,6 +47,8 @@ const App = ({ topDropDisplayed, displayTopDrop, setLeftNav }) => {
           <MainSection />
         </div>
       )}
+      {/** MODALS */}
+      <Modals />
     </div>
   );
 };

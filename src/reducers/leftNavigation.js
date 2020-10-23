@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   openTab: -1,
   showExtension: false,
   shrinkTitles: false,
+  tabTitle: "",
 };
 
 export default (state = INITIAL_STATE, action = {}) => {
@@ -21,9 +22,11 @@ export default (state = INITIAL_STATE, action = {}) => {
         width: action.payload.width,
       };
     case CHANGED_LEFT_TAB:
+      const newTabTitle = changeTabTitle(action.payload);
       return {
         ...state,
         openTab: action.payload,
+        tabTitle: newTabTitle,
       };
     case TOGGLED_EXTENSION:
       return {
@@ -39,3 +42,23 @@ export default (state = INITIAL_STATE, action = {}) => {
       return state;
   }
 };
+
+/**
+ * changeTabTitle
+ *
+ * @param {Number} tab - The number of the tab that we clicked.
+ * @return {String} What we are labelling that tab.
+ *
+ * When our CHANGED_LEFT_TAB action is invoked, we will also change
+ * the tab title.
+ */
+function changeTabTitle(tab) {
+  switch (tab) {
+    case 0:
+      return "Pages";
+    case 1:
+      return "Bookmarks";
+    default:
+      return "";
+  }
+}

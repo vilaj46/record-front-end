@@ -5,32 +5,42 @@ import { connect } from "react-redux";
 import styles from "./LeftTab.module.css";
 
 // Actions
-import actions from "../../../../actions/leftNavigation.js";
+import { toggleExtension, setTab } from "../../../../actions/leftNavigation.js";
 
 // SVGS
-import right from "../../../../svgs/lnright.svg";
+import arrowBefore from "../../../../svgs/arrowBefore.svg";
 
-const LeftTab = ({ data, setTab, display, toggleExtension, active }) => {
+const LeftTab = ({ data, active, showExtension, toggleExtension, setTab }) => {
   const [image, setImage] = useState(data.src);
 
+  /**
+   * If we are not showing the extension, open the extension.
+   * Then set the tab we clicked on.
+   *
+   * If its open just change the tab.
+   */
   const onClick = () => {
-    if (!display) {
+    if (!showExtension) {
       toggleExtension(true);
     }
     setTab(data.tab);
   };
 
+  // Just highlights the image.
   const onMouseEnter = () => {
     setImage(data.hover);
   };
 
+  // Returns image back to normal after highlighting.
   const onMouseLeave = () => {
     if (image !== data.src) {
       setImage(data.src);
     }
   };
 
+  // Adds border which appears to be connected to the extension.
   const activeStyle = active ? styles.activeBorder : styles.iconContainer;
+  // Need slighly more with if its active to appear its all connect to the extension.
   const containerWidth = active ? styles.activeWidth : styles.regWidth;
 
   return (
@@ -48,7 +58,7 @@ const LeftTab = ({ data, setTab, display, toggleExtension, active }) => {
           title={data.title}
         />
         {image === data.hover && !active && (
-          <img src={right} className={styles.arrow} alt="Right Arrow" />
+          <img src={arrowBefore} className={styles.arrow} alt="Right Arrow" />
         )}
       </div>
     </div>
@@ -58,11 +68,11 @@ const LeftTab = ({ data, setTab, display, toggleExtension, active }) => {
 const mapStateToProps = (state) => {
   const { showExtension } = state.leftNavigation;
   return {
-    display: showExtension,
+    showExtension,
   };
 };
 
 export default connect(mapStateToProps, {
-  setTab: actions.setTab,
-  toggleExtension: actions.toggleExtension,
+  toggleExtension,
+  setTab,
 })(LeftTab);

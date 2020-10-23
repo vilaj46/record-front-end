@@ -6,20 +6,24 @@ import styles from "../DropdownList.module.css";
 
 // Actions
 import topNavigation from "../../../../../actions/topNavigation.js";
-import { uploadFile } from "../../../../../actions/file.js";
 
-const OpenButton = ({ uploadFile, displayTopDrop }) => {
+const InsertButton = ({ displayTopDrop }) => {
   // Was not firing so we use onInput.
   const onChange = () => {
     return;
   };
   const onInput = (e) => {
-    const objectURL = URL.createObjectURL(e.target.files[0]);
-    uploadFile({
-      name: e.target.files[0].name,
-      blob: objectURL,
-    });
+    const { files } = e.target;
+    const objectURLS = [];
 
+    // Files is not an array. Cannot use forEach.
+    for (let i = 0; i < files.length; i++) {
+      const objectURL = URL.createObjectURL(files[i]);
+      objectURLS.push(objectURL);
+    }
+    console.log(objectURLS);
+    // Display Modal
+    // Give ability to move files around with the original.
     displayTopDrop("");
   };
 
@@ -36,21 +40,21 @@ const OpenButton = ({ uploadFile, displayTopDrop }) => {
       >
         <input
           type="file"
-          name="Open"
-          id="Open"
+          name="Insert"
+          id="Insert"
           className={styles.fileInput}
           accept="application/pdf"
           value=""
           onChange={() => onChange}
           onInput={(e) => onInput(e)}
+          multiple
         />
-        <label htmlFor="Open">Open</label>
+        <label htmlFor="Insert">Insert</label>
       </button>
     </li>
   );
 };
 
-export default connect(null, {
-  uploadFile,
-  displayTopDrop: topNavigation.displayTopDrop,
-})(OpenButton);
+export default connect(null, { displayTopDrop: topNavigation.displayTopDrop })(
+  InsertButton
+);

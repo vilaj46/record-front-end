@@ -1,0 +1,23 @@
+.close {
+  margin-left: auto;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 50px;
+}
+
+.button {
+  background-color: #c7705f;
+  outline: none;
+  width: 100%;
+  border: none;
+}
+
+.button:hover {
+  background-color: #e45c42;
+}
+
+.img {
+  display: block;
+  margin: 0 auto;
+}

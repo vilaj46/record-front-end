@@ -20,21 +20,11 @@ const LeftNavigation = ({ openTab, blob }) => {
       <nav className={styles.leftNavigation}>
         <div className={styles.icons}>
           <LeftTab
-            // src={pagesBefore}
-            // hover={pagesAfter}
-            // alt="Page"
-            // title="Pages"
-            // tab={0}
             data={tabData[0]} // See below.
             active={openTab === 0}
           />
           <LeftTab
             data={tabData[1]} // See below.
-            // src={bookmarkBefore}
-            // hover={bookmarkAfter}
-            // alt="Bookmark"
-            // title="Bookmarks"
-            // tab={1}
             active={openTab === 1}
           />
         </div>
@@ -44,15 +34,6 @@ const LeftNavigation = ({ openTab, blob }) => {
       </nav>
     )
   );
-};
-
-const mapStateToProps = (state) => {
-  const { openTab } = state.leftNavigation;
-  const { url } = state.file;
-  return {
-    openTab,
-    blob: url,
-  };
 };
 
 const tabData = [
@@ -71,5 +52,14 @@ const tabData = [
     tab: 1,
   },
 ];
+
+const mapStateToProps = (state) => {
+  const { openTab } = state.leftNavigation;
+  const { blob } = state.file;
+  return {
+    openTab,
+    blob,
+  };
+};
 
 export default connect(mapStateToProps)(LeftNavigation);

@@ -10,6 +10,7 @@ import actions from "../../../../actions/topNavigation.js";
 // Dropdown Lists
 import FileDropdownList from "../DropdownLists/FileDropdownList";
 import EditDropdownList from "../DropdownLists/EditDropdownList";
+import DocumentDropdownList from "../DropdownLists/DocumentDropdownList";
 
 const TopDropdown = ({ label, disabled, displayTopDrop, topDropDisplayed }) => {
   const onClick = (e) => {
@@ -26,7 +27,7 @@ const TopDropdown = ({ label, disabled, displayTopDrop, topDropDisplayed }) => {
     }
   };
 
-  // Sets the inset of the pressed. Keeps button highlighted even when going over the dropdown list.
+  // Keeps button highlighted even when going over the dropdown list.
   const buttonPressed = topDropDisplayed === label ? styles.buttonPressed : "";
   // Disable click events for the file name.
   const isDisabled = disabled ? styles.disabled : "";
@@ -34,6 +35,8 @@ const TopDropdown = ({ label, disabled, displayTopDrop, topDropDisplayed }) => {
   // Determines which list we have open.
   const displayFileDropdown = label === "File" && topDropDisplayed === "File";
   const displayEditDropdown = label === "Edit" && topDropDisplayed === "Edit";
+  const displayDocumentDropdown =
+    label === "Document" && topDropDisplayed === "Document";
 
   return (
     label && (
@@ -47,6 +50,7 @@ const TopDropdown = ({ label, disabled, displayTopDrop, topDropDisplayed }) => {
         </button>
         {displayFileDropdown && <FileDropdownList />}
         {displayEditDropdown && <EditDropdownList />}
+        {displayDocumentDropdown && <DocumentDropdownList />}
       </div>
     )
   );

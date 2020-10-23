@@ -17,6 +17,8 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
  * Continue Documentation and clean up front end.
  * Clean up Components Remove bloat wheere we can. Mostly importing of actions.
  *
+ * Zooming with the pdf is annoying.
+ *
  * Hookup backend.
  *
  * PDF Functionality

@@ -1,0 +1,55 @@
+.modalContainer {
+  position: absolute;
+  z-index: 10;
+  border: 2px solid #808080;
+  width: 500px;
+  height: 300px;
+  top: 25%;
+  right: 30%;
+  border-radius: 3px;
+  background-color: #fff;
+  background-color: rgba(200, 200, 200, 0.95);
+}
+
+.modalHeader {
+  width: 90%;
+  height: 10%;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+.label {
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  height: 253px;
+  width: 465px;
+  margin: auto;
+}
+
+.handle {
+  position: absolute;
+  height: 100%;
+  width: 5%;
+}
+
+.left {
+  left: 0;
+  top: 0;
+}
+
+.right {
+  right: 0;
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+  width: 90%;
+  height: 5%;
+  right: 5%;
+}
