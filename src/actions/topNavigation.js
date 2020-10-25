@@ -20,6 +20,19 @@ const displayTopDrop = (label) => {
   };
 };
 
+/**
+ *
+ * @param {Array} blobs
+ */
+const selectDocumentsForInsertion = (blobs) => {
+  const { SELECTED_DOCUMENTS_FOR_INSERTION } = types;
+  return {
+    type: SELECTED_DOCUMENTS_FOR_INSERTION,
+    payload: blobs,
+  };
+};
+
 export default {
   displayTopDrop,
+  selectDocumentsForInsertion,
 };

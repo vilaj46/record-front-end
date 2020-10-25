@@ -7,7 +7,7 @@ import styles from "../DropdownList.module.css";
 // Actions
 import topNavigation from "../../../../../actions/topNavigation.js";
 
-const InsertButton = ({ displayTopDrop }) => {
+const InsertButton = ({ displayTopDrop, selectDocumentsForInsertion }) => {
   // Was not firing so we use onInput.
   const onChange = () => {
     return;
@@ -19,12 +19,16 @@ const InsertButton = ({ displayTopDrop }) => {
     // Files is not an array. Cannot use forEach.
     for (let i = 0; i < files.length; i++) {
       const objectURL = URL.createObjectURL(files[i]);
-      objectURLS.push(objectURL);
+      objectURLS.push({
+        blob: objectURL,
+        name: files[i].name,
+      });
     }
-    console.log(objectURLS);
+
     // Display Modal
     // Give ability to move files around with the original.
     displayTopDrop("");
+    selectDocumentsForInsertion(objectURLS);
   };
 
   const onClick = (e) => {
@@ -55,6 +59,7 @@ const InsertButton = ({ displayTopDrop }) => {
   );
 };
 
-export default connect(null, { displayTopDrop: topNavigation.displayTopDrop })(
-  InsertButton
-);
+export default connect(null, {
+  displayTopDrop: topNavigation.displayTopDrop,
+  selectDocumentsForInsertion: topNavigation.selectDocumentsForInsertion,
+})(InsertButton);

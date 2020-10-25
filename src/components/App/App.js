@@ -14,7 +14,12 @@ import Modals from "../Modals/Modals";
 import topNavigation from "../../actions/topNavigation.js";
 import leftNavigation from "../../actions/leftNavigation.js";
 
-const App = ({ topDropDisplayed, displayTopDrop, setLeftNav }) => {
+const App = ({
+  topDropDisplayed,
+  modalDisplayed,
+  displayTopDrop,
+  setLeftNav,
+}) => {
   const [loaded, setLoaded] = useState(false);
 
   /**
@@ -54,9 +59,10 @@ const App = ({ topDropDisplayed, displayTopDrop, setLeftNav }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { topDropDisplayed } = state.topNavigation;
+  const { topDropDisplayed, modalDisplayed } = state.topNavigation;
   return {
     topDropDisplayed,
+    modalDisplayed,
   };
 };
 

@@ -1,0 +1,68 @@
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.insertFile {
+  pointer-events: none;
+  margin-bottom: 12px;
+}
+
+.inputContainer {
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.pageNumInput {
+  width: 60px;
+}
+
+.pageNumLabel {
+  margin-right: 24px;
+}
+
+.pageCount {
+  margin-left: 12px;
+}
+
+.locationContainer {
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.dropContainer {
+  margin-left: 16px;
+  width: 120px;
+  position: relative;
+}
+
+.dropdownButton {
+  outline: none;
+  width: 120px;
+  text-align: left;
+  letter-spacing: 0.7px;
+  border: 1px solid #bfbfbf;
+}
+
+.menu {
+  position: absolute;
+  width: 118px;
+  border: 1px solid #bfbfbf;
+}
+
+.dropButton {
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: left;
+  letter-spacing: 0.7px;
+}
+
+.dropButton:hover {
+  background-color: #5194ff;
+  color: white;
+}
+
+.disabled {
+  pointer-events: none;
+}
