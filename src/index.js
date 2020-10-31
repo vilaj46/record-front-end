@@ -14,6 +14,7 @@ import rootReducer from "./reducers";
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
 
 /**
+ * Testing
  * Continue Documentation and clean up front end.
  * Clean up Components Remove bloat wheere we can. Mostly importing of actions.
  *
